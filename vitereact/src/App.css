@@ -1,0 +1,25 @@
+.app_navbar{
+  width: 100%;
+}
+.app_body{
+  display: flex;
+ width: 100%;
+}
+.app_sidebar{
+  display: flex;
+  width: 20%;
+  min-height: 450px;
+}
+.app_page{
+  display: flex;
+  width: 80%;
+  min-height: 450px;
+}
+.app_footer{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: blueviolet;
+  height: 250px;
+}
