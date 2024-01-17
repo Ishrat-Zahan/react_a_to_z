@@ -9,6 +9,8 @@ import Footer from './layout/Footer'
 function App() {
   const [count, setCount] = useState(0)
 
+
+
   return (
     <>
 
@@ -16,7 +18,7 @@ function App() {
         <Header />
       </div >
       <div className='app_body'>
-        <div className='app_sidebar'><Sidebar /></div>
+        <div className='app_sidebar'><Sidebar  /></div>
         <div className='app_page'><Outlet /></div>
       </div>
       <div className='app_footer'><Footer /></div>
