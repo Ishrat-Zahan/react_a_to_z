@@ -4,7 +4,9 @@ import React, { useEffect, useState } from 'react';
 function Dashboard() {
   const [category, setCategory] = useState('');
   const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState([]);
+  const [single, setSingle] = useState([]);
+  const [singleFind, setSingleFind] = useState([]);
 
   const handleCategory = (data) => {
     setCategory(data);
@@ -31,6 +33,20 @@ function Dashboard() {
     fetchData();
   }, []);
 
+
+  const btnClick = (id) => {
+    // alert(id);
+
+    const selectFind = data.find((item) => item.id === id);
+    setSingleFind(selectFind);
+
+    console.log(selectFind);
+
+    const selectFilter = data.filter((item) => item.id == id);
+    // console.log(selectFilter);
+    setSingle(selectFilter);
+  }
+
   return (
     <>
       <div>Dashboard</div>
@@ -45,12 +61,33 @@ function Dashboard() {
         ) : (
           <ul>
             {data.map((d) => (
-              <li key={d.id}>{d.title}</li>
+              <div key={d.id}>
+                <li>{d.title}</li>
+                <button onClick={() => btnClick(d.id)} className='btn btn-primary'>
+                  Show
+                </button>
+                <a className='btn btn-success ms-2' href={`/single/${d.id}`}>Details</a>
+              </div>
             ))}
           </ul>
 
         )}
       </div>
+
+      <div>
+        <h2>Selected Item Details</h2>
+        <ul>
+          {single.map((d) => (
+
+            <div key={d.id}>
+              <li>{d.title}</li>
+            </div>
+          ))}
+        </ul>
+
+      </div>
+      <h1>Find Data</h1>
+      <li>{singleFind.title}</li>
     </>
   );
 }
