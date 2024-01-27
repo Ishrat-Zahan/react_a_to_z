@@ -1,15 +1,28 @@
-import React from 'react'
+import React, { useState } from 'react';
 
+function Mobile({ onCategoryChange }) {
 
-function Mobile(props) {
-  
-  const abc = props.category.map((item) => item)
+  const [name, setName] = useState('');
 
-  console.log(abc);
+  const handleClick = () => {
+    onCategoryChange(name);
+  };
 
   return (
-    <div>Mobile</div>
-  )
+    <>
+      <div>Mobile</div>
+      <input
+        type="text" className='form-control' value={name} onChange={(e) => setName(e.target.value)}
+      />
+      <div onClick={handleClick} className='btn btn-primary'>
+        button
+      </div>
+
+      <div>
+        {name}
+      </div>
+    </>
+  );
 }
 
-export default Mobile
+export default Mobile;
